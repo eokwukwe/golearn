@@ -37,6 +37,7 @@ func main() {
 		tools.ReadFileDefinition,
 		tools.ListFilesDefinition,
 		tools.EditFileDefinition,
+		tools.DeleteFileDefinition,
 	}
 	agent := agent.NewAgent(&client, getUserMessage, tools)
 	errA := agent.Run(context.TODO())
