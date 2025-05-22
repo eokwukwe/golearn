@@ -1,4 +1,4 @@
-package test
+package handlers_test
 
 import (
 	"bytes"
@@ -14,10 +14,9 @@ import (
 )
 
 func TestRegister(t *testing.T) {
-	// Initialize test database
-	if err := config.InitDB(); err != nil {
-		t.Fatalf("Failed to initialize test database: %v", err)
-	}
+	// Set up test database
+	config.DB = config.InitTestDB()
+	defer config.DB.Close()
 
 	// Test cases
 	type testCase struct {
@@ -117,10 +116,5 @@ func TestRegister(t *testing.T) {
 				}
 			}
 		})
-	}
-
-	// Clean up test database
-	if _, err := config.DB.Exec("DELETE FROM users"); err != nil {
-		t.Errorf("Failed to clean up test database: %v", err)
 	}
 }

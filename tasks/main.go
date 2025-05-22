@@ -21,6 +21,7 @@ func main() {
 	})
 
 	http.HandleFunc("/api/v1/register", handlers.Register)
+	http.HandleFunc("/api/v1/login", handlers.Login)
 
 	// Start server
 	log.Printf("Starting server on :7070")
